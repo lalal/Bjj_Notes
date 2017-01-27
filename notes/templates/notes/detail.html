@@ -1,0 +1,12 @@
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{{notes.note_date}}
+<br>
+{{notes.note_text}}
+<br>
+{{notes.note_vid}}
+{# <a href="{% url 'edit' note_id=notes.id %}">Edit Note</a>  #}
+<a href="notes/edit_note/{{notes.id}}">Edit Note</a> 
+{# <a href=" {% url 'delete' note_id=notes.id %}">Delete Note</a> #}
+<a href="notes/delete_note/{{notes.id}}">Delete Note</a>
