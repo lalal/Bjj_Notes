@@ -15,7 +15,7 @@ Hello, {{user}}
 {% endif %}
 <a href="{% url "notes:create" %}">Create a new note</a>
 <br>
-<a href="/accounts/logout">logout</a>
+<a href="{% url 'logout' %}?next=/">logout</a>
 {% else %}
 Please login.
 {% endif %}
