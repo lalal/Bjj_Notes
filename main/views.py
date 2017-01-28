@@ -6,6 +6,6 @@ from notes.models import Notes
 def home(request):
     if request.user.is_authenticated():
         notes = Notes.objects.all()
-        return render(request, 'main/home.html', {'notes': notes})
+        return render(request, 'notes/notes_list.html', {'notes': notes})
     else:
         return render(request, 'main/home.html')

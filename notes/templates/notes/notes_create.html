@@ -20,8 +20,8 @@
 <form method="POST" class="post_note">
 {% csrf_token %}
 <table>
-{{ form.as_table }}
+{{ form.as_p }}
 </table>
-<button type="Submit">Create New Note</button>
+<input formnovalidate type="Submit" value="Submit"/>
 </form>
 {% endblock %}

@@ -1,35 +1,35 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.utils import timezone
 from .models import Notes, NotesForm
 
-class IndexView(generic.ListView):
-    template_name = 'notes/index.html'
-    context_object_name = 'note_list'
 
-    def get_queryset(self):
-        return Notes.objects.all()
-
-class DetailView(generic.DetailView):
-    model = Notes
-    template_name = 'notes/detail.html'
-
-def detail(request, note_id):
-    note = get_object_or_404(Notes, pk=note_id)
-    return render(request, 'notes/detail.html', {'notes': note})
-
-def create_note(request):
-    form = NotesForm()
-    return render(request, 'notes/create_note.html', {'form': form})
-
-def edit_note(request, note_id):
-    note = get_object_or_404(Notes, pk=note_id)
-    form = NotesForm(instance=note)
-    return render(request, 'notes/create_note.html', {'form': form})
-    
-def delete_note(request, note_id):
-    note = get_object_or_404(Notes, pk=note_id)
-    note.delete()
+def notes_list(request):
     notes = Notes.objects.all()
-    return render(request, 'notes/index.html', {'notes': notes})
-    
+    return render(request, 'notes/notes_list.html', {'notes': notes})
+
+def notes_create(request):
+    form = NotesForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('notes:list')
+    return render(request, 'notes/notes_create.html', {'form': form})
+
+def notes_update(request, pk):
+    note = get_object_or_404(Notes, pk=pk)
+    form = NotesForm(request.POST or None, instance=note)
+    if form.is_valid():
+        form.save()
+        return redirect('notes:list')
+    return render(request, 'notes/notes_create.html', {'form': form})
+
+def notes_delete(request, pk):
+    note = get_object_or_404(Notes, pk=pk)
+    if request.method == 'POST':
+        note.delete()
+        return redirect('notes:list')
+    return render(request, 'notes/notes_confirm_delete.html', {'object': note})
+
+def notes_detail(request, pk):
+    note = get_object_or_404(Notes, pk=pk)
+    return render(request, 'notes/notes_detail.html', {'notes': note})

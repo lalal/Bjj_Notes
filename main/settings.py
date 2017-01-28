@@ -55,11 +55,12 @@ ROOT_URLCONF = 'main.urls'
 CURR_PATH = os.path.realpath('.')
 CURR_PATH_MAIN = CURR_PATH + '/main/templates/'
 REG_TEMPLATES = CURR_PATH_MAIN + 'registration'
+NOTES_TEMPLATES = CURR_PATH + '/notes/templates/'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [CURR_PATH, CURR_PATH_MAIN, REG_TEMPLATES],
+        'DIRS': [CURR_PATH, CURR_PATH_MAIN, REG_TEMPLATES, NOTES_TEMPLATES],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
