@@ -1,12 +1,12 @@
-
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 {{notes.note_date}}
 <br>
-{{notes.note_text}}
+{{notes.note_text | safe}}
 <br>
 {{notes.note_vid}}
-{# <a href="{% url 'edit' note_id=notes.id %}">Edit Note</a>  #}
-<a href="notes/edit_note/{{notes.id}}">Edit Note</a> 
-{# <a href=" {% url 'delete' note_id=notes.id %}">Delete Note</a> #}
-<a href="notes/delete_note/{{notes.id}}">Delete Note</a>
+
+
+<input type="button" value="Update" onClick="location.href='{% url 'notes:update' notes.id%}'"/>
+<input type="button" value="Delete" onClick="location.href='{% url 'notes:delete' notes.id%}'"/>
+

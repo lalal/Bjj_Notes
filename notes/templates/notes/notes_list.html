@@ -4,9 +4,11 @@ Hello, {{user}}
 <ul>
   {% for note in notes %}
      <li>
-     <a href="{% url "notes:update" note.id%}">{{ note.note_title}} -- {{note.note_instructor}} -- {{note.note_date}}</a> 
-     <a href="{% url "notes:delete" note.id%}">Delete this note</a> 
-     <br>
+     {{ note.note_title}} -- {{note.note_instructor}} -- {{note.note_date}} <br>
+     <input type="button" value="View" onClick="location.href='{% url 'notes:detail' note.id%}'"/>
+     <input type="button" value="Update" onClick="location.href='{% url 'notes:update' note.id%}'"/>
+     <input type="button" value="Delete" onClick="location.href='{% url 'notes:delete' note.id%}'"/>
+     <br><br>
      </li>
   {% endfor %}
 </ul>
