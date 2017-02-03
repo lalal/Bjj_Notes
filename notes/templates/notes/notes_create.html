@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
 <head>
   <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
@@ -16,13 +17,12 @@
   content_css: '//www.tinymce.com/css/codepen.min.css'
 });</script>
 </head>
-<h1> Create Note <h1>
+<h1> Create/Update Note <h1>
 <form method="POST" class="post_note">
 {% csrf_token %}
 <table>
 {{ form.as_p }}
 </table>
-<input formnovalidate type="Submit" value="Create/Update Note"/>
+<input formnovalidate type="Submit" value="Create/Update Note"/><input type="button" value="Home"   onClick="location.href='/'"/>
 </form>
-<input type="button" value="Home"   onClick="location.href='/'"/>
 {% endblock %}

@@ -1,5 +1,4 @@
-Hello, {{user}}
-<br>
+<h1>Notes Summary</h1>
 <br>
 {% if user.is_authenticated %}
 {% if notes %}
@@ -21,6 +20,7 @@ Hello, {{user}}
 {% else %}
   <p>No notes are available.</p>
 {% endif %}
+<br>
 <br>
 <input type="button" value="Create New Note" onClick="location.href='{% url 'notes:create' %}'"/>
 <input type="button" value="Logout" onClick="location.href='{% url 'logout' %}?next=/'"/>
