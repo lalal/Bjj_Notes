@@ -1,12 +1,14 @@
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-{{notes.note_date}}
-<br>
+<table>
+<tr><th>Note Title</th><th>Instructor</th><th>Session Date</th>
+<tr><td>{{notes.note_title}}</td><td>{{notes.note_instructor}}</td><td>{{notes.note_date}}</td></tr>
+</table>
+<h2>Video Link</h2>
+<iframe width="560" height="315" src="{{notes.note_vid}}" frameborder="0" allowfullscreen></iframe>
+<br><br>
+<h2>Note Description</h2>
 {{notes.note_text | safe}}
-<br>
-{{notes.note_vid}}
-
-
 <input type="button" value="Update" onClick="location.href='{% url 'notes:update' notes.id%}'"/>
 <input type="button" value="Delete" onClick="location.href='{% url 'notes:delete' notes.id%}'"/>
-
+<input type="button" value="Home"   onClick="location.href='/'"/>

@@ -1,24 +1,31 @@
 Hello, {{user}}
+<br>
+<br>
 {% if user.is_authenticated %}
 {% if notes %}
-<ul>
+<table>
+<tr> 
+<th>Title</th><th>Instructor</th><th>Session Date</th>
+</tr>
   {% for note in notes %}
-     <li>
-     {{ note.note_title}} -- {{note.note_instructor}} -- {{note.note_date}} <br>
+<tr> 
+<td>{{ note.note_title}}</td><td>{{note.note_instructor}}</td><td>{{note.note_date}}</td>
+<td>
      <input type="button" value="View" onClick="location.href='{% url 'notes:detail' note.id%}'"/>
      <input type="button" value="Update" onClick="location.href='{% url 'notes:update' note.id%}'"/>
      <input type="button" value="Delete" onClick="location.href='{% url 'notes:delete' note.id%}'"/>
-     <br><br>
-     </li>
+</td>
+</tr> 
   {% endfor %}
-</ul>
+</table>
 {% else %}
   <p>No notes are available.</p>
 {% endif %}
-<a href="{% url "notes:create" %}">Create a new note</a>
 <br>
-<a href="{% url 'logout' %}?next=/">logout</a>
+<input type="button" value="Create New Note" onClick="location.href='{% url 'notes:create' %}'"/>
+<input type="button" value="Logout" onClick="location.href='{% url 'logout' %}?next=/'"/>
 {% else %}
 Please login.
 {% endif %}
+
 
