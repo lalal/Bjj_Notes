@@ -27,7 +27,7 @@ SECRET_KEY = '+m5=(y$g$des9^41=!*31*3=wsz9r2j+!i$&1)0bu&gh^_vp$('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = ['0.0.0.0', 'bjjnotes.herokuapp.com']
 
 LOGIN_URL='/login/'
 
@@ -131,4 +131,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-DATABASES['default'] = dj_database_url.config()
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
