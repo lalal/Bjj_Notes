@@ -25,7 +25,7 @@ SECRET_KEY = '+m5=(y$g$des9^41=!*31*3=wsz9r2j+!i$&1)0bu&gh^_vp$('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0']
 
 LOGIN_URL='/login/'
 

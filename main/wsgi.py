@@ -1,5 +1,5 @@
 """
-WSGI config for alok_2017_class_tracker project.
+WSGI config for main project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "alok_2017_class_tracker.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "main.settings")
 
 application = get_wsgi_application()
