@@ -12,7 +12,6 @@ import views as home_views
 
 urlpatterns = [
     url(r'^', include('django.contrib.auth.urls')),
-    url(r'^/$', home_views.home, name='index'), 
     url(r'^$', home_views.home, name='index'), 
     url(r'^notes/', include('notes.urls')),
     url(r'^admin/', admin.site.urls),

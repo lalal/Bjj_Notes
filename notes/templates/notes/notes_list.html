@@ -2,13 +2,25 @@
 <br>
 {% if user.is_authenticated %}
 {% if notes %}
+
+<form method="POST">
+{% csrf_token %}
+Filter By Category: <select name="cat">
+<option value="None">None</option>
+{% for i in categories %}
+<option value="{{i.note_category}}">{{i.note_category}}</option>
+{% endfor %}
+</select>
+     <input type="submit" value="Filter" onClick="location.href='/'"/>
+</form>
+
 <table>
 <tr> 
-<th>Title</th><th>Instructor</th><th>Session Date</th>
+<th>Title</th><th>Instructor</th><th>Session Date</th><th>Category</th>
 </tr>
   {% for note in notes %}
 <tr> 
-<td>{{ note.note_title}}</td><td>{{note.note_instructor}}</td><td>{{note.note_date}}</td>
+<td>{{ note.note_title}}</td><td>{{note.note_instructor}}</td><td>{{note.note_date|date:'m-d-Y'}}</td><td>{{note.note_category}}</td>
 <td>
      <input type="button" value="View" onClick="location.href='{% url 'notes:detail' note.id%}'"/>
      <input type="button" value="Update" onClick="location.href='{% url 'notes:update' note.id%}'"/>
