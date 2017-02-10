@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% block title %}Create Note{% endblock %}
 
 {% block content %}
 <head>
@@ -23,6 +24,7 @@
 <table>
 {{ form.as_p }}
 </table>
-<input formnovalidate type="Submit" value="Create/Update Note"/><input type="button" value="Home"   onClick="location.href='/'"/>
+<input formnovalidate type="Submit" class="btn btn-primary" value="Create/Update Note"/>
+<input type="button" class="btn btn-success" value="Home"   onClick="location.href='/'"/>
 </form>
 {% endblock %}

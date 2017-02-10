@@ -1,3 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Note Detail{% endblock %}
+
+{% block content %}
+
 <h1>Notes Detail</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -11,6 +17,8 @@
 <br><br>
 <h2>Note Description</h2>
 {{notes.note_text | safe}}
-<input type="button" value="Update" onClick="location.href='{% url 'notes:update' notes.id%}'"/>
-<input type="button" value="Delete" onClick="location.href='{% url 'notes:delete' notes.id%}'"/>
-<input type="button" value="Home"   onClick="location.href='/'"/>
+<input type="button" value="Update" class="btn btn-primary" onClick="location.href='{% url 'notes:update' notes.id%}'"/>
+<input type="button" value="Delete" class="btn btn-danger" onClick="location.href='{% url 'notes:delete' notes.id%}'"/>
+<input type="button" value="Home"  class="btn btn-success" onClick="location.href='/'"/>
+
+{% endblock %}

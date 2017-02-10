@@ -1,3 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Notes Summary{% endblock %}
+
+{% block content %}
+
 <h1>Notes Summary</h1>
 <br>
 {% if user.is_authenticated %}
@@ -11,7 +17,7 @@ Filter By Category: <select name="cat">
 <option value="{{i.note_category}}">{{i.note_category}}</option>
 {% endfor %}
 </select>
-     <input type="submit" value="Filter" onClick="location.href='/'"/>
+     <input type="submit" class="btn btn-primary" value="Filter" onClick="location.href='/'"/>
 </form>
 
 <table>
@@ -22,9 +28,9 @@ Filter By Category: <select name="cat">
 <tr> 
 <td>{{ note.note_title}}</td><td>{{note.note_instructor}}</td><td>{{note.note_date|date:'m-d-Y'}}</td><td>{{note.note_category}}</td>
 <td>
-     <input type="button" value="View" onClick="location.href='{% url 'notes:detail' note.id%}'"/>
-     <input type="button" value="Update" onClick="location.href='{% url 'notes:update' note.id%}'"/>
-     <input type="button" value="Delete" onClick="location.href='{% url 'notes:delete' note.id%}'"/>
+     <input type="button" class="btn btn-info" value="View" onClick="location.href='{% url 'notes:detail' note.id%}'"/>
+     <input type="button" class="btn btn-primary" value="Update" onClick="location.href='{% url 'notes:update' note.id%}'"/>
+     <input type="button" class="btn btn-danger" value="Delete" onClick="location.href='{% url 'notes:delete' note.id%}'"/>
 </td>
 </tr> 
   {% endfor %}
@@ -34,10 +40,10 @@ Filter By Category: <select name="cat">
 {% endif %}
 <br>
 <br>
-<input type="button" value="Create New Note" onClick="location.href='{% url 'notes:create' %}'"/>
-<input type="button" value="Logout" onClick="location.href='{% url 'logout' %}?next=/'"/>
+<input type="button" class="btn btn-primary" value="Create New Note" onClick="location.href='{% url 'notes:create' %}'"/>
+<input type="button" class="btn btn-warning" value="Logout" onClick="location.href='{% url 'logout' %}?next=/'"/>
 {% else %}
 Please login.
 {% endif %}
 
-
+{% endblock %}
