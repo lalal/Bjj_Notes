@@ -13,11 +13,14 @@ import views as home_views
 urlpatterns = [
     url(r'^', include('django.contrib.auth.urls')),
     url(r'^$', home_views.home, name='index'), 
+    url(r'^contact/', home_views.contact, name='contact'), 
+    url(r'^about/', home_views.about, name='about'), 
+    url(r'^faq/', home_views.faq, name='faq'), 
     url(r'^notes/', include('notes.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^register/', CreateView.as_view(template_name='register.html',
                        form_class=UserCreationForm,
-                       success_url='/')),
+                       success_url='/'), name='register'),
     
 ]

@@ -18,13 +18,18 @@
   content_css: '//www.tinymce.com/css/codepen.min.css'
 });</script>
 </head>
-<h1> Create/Update Note <h1>
-<form method="POST" class="post_note">
+<div class="container">
+<div class="panel panel-primary">
+  <div class="panel-heading"><h1 class="panel-title">Create/Update Note</h1></div>
+  <div class="panel-body">
+<form method="POST" class="form-horizontal">
 {% csrf_token %}
-<table>
-{{ form.as_p }}
+<table class="table table-condensed">
+{{ form.as_table }}
 </table>
 <input formnovalidate type="Submit" class="btn btn-primary" value="Create/Update Note"/>
-<input type="button" class="btn btn-success" value="Home"   onClick="location.href='/'"/>
 </form>
+</div>
+</div>
+</div>
 {% endblock %}

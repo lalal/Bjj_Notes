@@ -3,11 +3,19 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-  <h2>Login</h2>
+<div class="container">
+<div class="jumbotron">
+<div class="panel panel-primary">
+  <div class="panel-heading"><h1 class="panel-title">Login</h1></div>
+  <div class="panel-body">
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Login</button>
+    <button type="submit" class="btn btn-success">Login</button>
   </form>
+  </div>
+</div>
+</div>
+</div>
 {% endblock %}
 

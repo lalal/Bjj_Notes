@@ -4,11 +4,13 @@
 
 {% block content %}
 
-<h1>Notes Summary</h1>
-<br>
 {% if user.is_authenticated %}
 {% if notes %}
-
+<div class="container">
+<div class="jumbotron">
+<div class="panel panel-primary">
+  <div class="panel-heading"><h1 class="panel-title">Notes Summary</h1></div>
+  <div class="panel-body">
 <form method="POST">
 {% csrf_token %}
 Filter By Category: <select name="cat">
@@ -19,10 +21,10 @@ Filter By Category: <select name="cat">
 </select>
      <input type="submit" class="btn btn-primary" value="Filter" onClick="location.href='/'"/>
 </form>
-
-<table>
+<br>
+<table class="table table-bordered table-striped">
 <tr> 
-<th>Title</th><th>Instructor</th><th>Session Date</th><th>Category</th>
+<th>Title</th><th>Instructor</th><th>Session Date</th><th>Category</th><th>Actions</th>
 </tr>
   {% for note in notes %}
 <tr> 
@@ -41,9 +43,12 @@ Filter By Category: <select name="cat">
 <br>
 <br>
 <input type="button" class="btn btn-primary" value="Create New Note" onClick="location.href='{% url 'notes:create' %}'"/>
-<input type="button" class="btn btn-warning" value="Logout" onClick="location.href='{% url 'logout' %}?next=/'"/>
 {% else %}
 Please login.
 {% endif %}
+</div>
+</div>
+</div>
+</div>
 
 {% endblock %}

@@ -17,17 +17,42 @@
    
 
 <body> 
-    <div id="sidebar">
-        {% block sidebar %}
-        <ul>
-            <li><a href="/">Home</a></li>
-        </ul>
-        {% endblock %}
-    </div>
+
+    <nav role="navigation" class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar">Foo</span>
+                <span class="icon-bar">Bar</span>
+                <span class="icon-bar">Me</span>
+            </button>
+            <a href="/" class="navbar-brand">BjjNotes</a>
+        </div>
+
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'faq' %}">FAQ</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}?next=/">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}?next=/">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+
 
     <div id="content">
         {% block content %}{% endblock %}
     </div>
+
 </body> 
 
 </html> 

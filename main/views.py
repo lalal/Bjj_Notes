@@ -9,3 +9,12 @@ def home(request):
         return notes_list(request)
     else:
         return render(request, 'main/home.html')
+
+def contact(request):
+        return render(request, 'main/contact.html')
+    
+def faq(request):
+        return render(request, 'main/faq.html')
+
+def about(request):
+        return render(request, 'main/about.html')

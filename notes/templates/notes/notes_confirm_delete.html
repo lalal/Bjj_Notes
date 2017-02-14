@@ -4,12 +4,16 @@
 
 {% block content %}
 
-<h1>Notes Confirm Delete</h1>
-<br>
+<div class="container">
+<div class="jumbotron">
+<div class="panel panel-primary">
+  <div class="panel-heading"><h1 class="panel-title">Notes Confirm Delete</h1></div>
+  <div class="panel-body">
 <form method="post">{% csrf_token %}
 Are you sure you want to delete "{{object}}"?
 <br>
 <br>
-<input type="submit" value="submit"/><input type="button" value="Home"   onClick="location.href='/'"/>
+<input type="submit" value="Delete" class="btn btn-danger"/>
+<input type="button" value="Cancel" class="btn btn-default" onClick="location.href='/'"/>
 </form>
 {% endblock %}

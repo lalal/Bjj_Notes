@@ -4,11 +4,14 @@
 
 {% block content %}
 
-<h1>Notes Detail</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-<table>
+<div class="container">
+<div class="jumbotron">
+<div class="panel panel-primary">
+  <div class="panel-heading"><h1 class="panel-title">Notes Detail</h1></div>
+  <div class="panel-body">
+<table class="table">
 <tr><th>Note Title</th><th>Instructor</th><th>Session Date</th><th>Category</th>
 <tr><td>{{notes.note_title}}</td><td>{{notes.note_instructor}}</td><td>{{notes.note_date|date:'m-d-Y'}}</td><td>{{notes.note_category}}</td></tr>
 </table>
@@ -19,6 +22,8 @@
 {{notes.note_text | safe}}
 <input type="button" value="Update" class="btn btn-primary" onClick="location.href='{% url 'notes:update' notes.id%}'"/>
 <input type="button" value="Delete" class="btn btn-danger" onClick="location.href='{% url 'notes:delete' notes.id%}'"/>
-<input type="button" value="Home"  class="btn btn-success" onClick="location.href='/'"/>
-
+</div>
+</div>
+</div>
+</div>
 {% endblock %}
