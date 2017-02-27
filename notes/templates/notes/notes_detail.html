@@ -15,9 +15,11 @@
 <tr><th>Note Title</th><th>Instructor</th><th>Session Date</th><th>Category</th>
 <tr><td>{{notes.note_title}}</td><td>{{notes.note_instructor}}</td><td>{{notes.note_date|date:'m-d-Y'}}</td><td>{{notes.note_category}}</td></tr>
 </table>
+{% if notes.note_vid %}
 <h2>Video Link</h2>
 <iframe width="560" height="315" src="{{notes.note_vid}}" frameborder="0" allowfullscreen></iframe>
 <br><br>
+{% endif %}
 <h2>Note Description</h2>
 {{notes.note_text | safe}}
 <input type="button" value="Update" class="btn btn-primary" onClick="location.href='{% url 'notes:update' notes.id%}'"/>

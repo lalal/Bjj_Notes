@@ -13,7 +13,6 @@ def get_notes_and_categories(my_user):
 
 @login_required
 def notes_list(request):
-    print "got here"
     categories = {}
     if request.method == 'POST':
        cat_filter = request.POST.get('cat') 
@@ -23,7 +22,6 @@ def notes_list(request):
            notes = Notes.objects.filter(note_user=request.user).filter(note_category=cat_filter).order_by('note_date')
     else:   
        notes, categories = get_notes_and_categories(request.user)
-    print notes, categories
     return render(request, 'notes/notes_list.html', {'notes': notes, 'categories': categories})
 
 @login_required

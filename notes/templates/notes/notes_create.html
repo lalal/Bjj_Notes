@@ -24,7 +24,7 @@
   <div class="panel-body">
 <form method="POST" class="form-horizontal">
 {% csrf_token %}
-<table class="table table-condensed">
+<table class="table table-condensed table-striped">
 {{ form.as_table }}
 </table>
 <input formnovalidate type="Submit" class="btn btn-primary" value="Create/Update Note"/>
